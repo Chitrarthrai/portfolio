@@ -1,4 +1,5 @@
 @apply
 @tailwind
 # Custom Dictionary Words
+CBFF
 Chitrarth
