@@ -40,8 +40,6 @@ export const BentoGridItem = ({
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
   id?: number;
   img?: string;
   imgClassName?: string;
@@ -50,11 +48,14 @@ export const BentoGridItem = ({
 }) => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () =>{
-    navigator.clipboard.writeText('chitrarthrai10@gmail.com');
+  const handleCopy = () => {
+    const text = "chitrarthrai10@gmail.com";
+    navigator.clipboard.writeText(text);
     setCopied(true);
-  }
+  
+  };
 
+  
   return (
     <div
       className={cn(
@@ -89,7 +90,7 @@ export const BentoGridItem = ({
         </div>
         { id===6 && (
           <BackgroundGradientAnimation>
-            <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
+            {/* <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div> */}
           </BackgroundGradientAnimation>
         )}
         <div className={cn(
@@ -137,7 +138,7 @@ export const BentoGridItem = ({
               }}/>
             </div>
             <MagicButton
-              title={copied ? 'Email Copied' : 'Copy My Email'}
+              title={copied ? 'Email is Copied' : 'Copy My Email'}
               icon={<IoCopyOutline/>}
               position="left"
               otherClasses="!bg-[#161a31]"
