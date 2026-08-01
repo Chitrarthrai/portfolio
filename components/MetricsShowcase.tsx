@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { metrics } from "@/data";
+import { MatrixTextDecoder } from "./ui/MatrixTextDecoder";
 
 /**
  * MetricsShowcase — Stitch "Engineering Impact" screen
@@ -64,8 +65,7 @@ const MetricsShowcase = () => {
               color: "#FFFFFF",
             }}
           >
-            Engineering{" "}
-            <span className="text-gradient-stitch">Impact</span>
+            Engineering <MatrixTextDecoder text="Impact" className="text-gradient-stitch" />
           </h2>
 
           <p

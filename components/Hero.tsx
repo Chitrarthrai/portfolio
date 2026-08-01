@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "@/data";
 
 const cliLines = [
@@ -188,8 +188,9 @@ const NavBar = () => {
 };
 
 const CLITerminal = () => {
-  const [visibleLines, setVisibleLines] = useState(1);
   const [activeTab, setActiveTab] = useState("--info");
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const tabs = ["--info", "--stack", "--reliance", "--contact"];
 
@@ -215,8 +216,48 @@ const CLITerminal = () => {
       osc.start();
       osc.stop(audioCtx.currentTime + 0.05);
     } catch (e) {
-      // AudioContext unavailable or blocked by browser policy
+      // AudioContext fallback
     }
+  };
+
+  // Looping Typewriter + Backspace effect
+  useEffect(() => {
+    const fullText = outputMap[activeTab];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      // Typing phase: add one char at a time
+      if (displayedText.length < fullText.length) {
+        timer = setTimeout(() => {
+          setDisplayedText(fullText.slice(0, displayedText.length + 1));
+        }, 30);
+      } else {
+        // Finished typing: pause before backspacing
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 3500);
+      }
+    } else {
+      // Backspacing phase: erase one char at a time
+      if (displayedText.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayedText(fullText.slice(0, displayedText.length - 1));
+        }, 15);
+      } else {
+        // Finished erasing: restart typing
+        setIsDeleting(false);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, activeTab]);
+
+  // When activeTab changes manually, reset typing state immediately
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setDisplayedText("");
+    setIsDeleting(false);
+    playClickSound();
   };
 
   return (
@@ -262,10 +303,7 @@ const CLITerminal = () => {
             {tabs.map((tab) => (
               <button
                 key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                  playClickSound();
-                }}
+                onClick={() => handleTabChange(tab)}
                 className="px-2.5 py-0.5 rounded transition-all duration-200 shrink-0"
                 style={{
                   fontFamily: "JetBrains Mono, monospace",
@@ -285,7 +323,7 @@ const CLITerminal = () => {
 
         {/* Output */}
         <div
-          className="border-l-2 pl-3 ml-1 py-1"
+          className="border-l-2 pl-3 ml-1 py-1 min-h-[50px] flex items-center"
           style={{ borderColor: "rgba(255,255,255,0.1)" }}
         >
           <p
@@ -297,7 +335,7 @@ const CLITerminal = () => {
               color: "#BEC1DD",
             }}
           >
-            &gt; {outputMap[activeTab]}
+            &gt; {displayedText}
           </p>
         </div>
       </div>

@@ -178,9 +178,9 @@ export const projects = [
     id: 1,
     title: "FinanceTask",
     des: "Cross-platform financial tracker with real-time sync via Supabase WebSockets, Gemini AI for task extraction, and Kotlin SMS scraping for automated expense logging.",
-    img: "/p1.svg",
+    img: "/p1_preview.png",
     iconLists: ["/re.svg", "/ts.svg", "/next.svg", "/tail.svg"],
-    link: "https://github.com/Chitrarthrai",
+    link: "https://github.com/Chitrarthrai/FinanceTask",
     category: "Personal",
     technologies: [
       "React Native",
@@ -196,7 +196,7 @@ export const projects = [
     des: "Automated document analysis pipeline using Tesseract OCR and OpenCV, reducing invoice processing time by 90% with multi-threaded batch processing.",
     img: "/p2.svg",
     iconLists: ["/re.svg", "/ts.svg", "/tail.svg"],
-    link: "https://github.com/Chitrarthrai",
+    link: "https://github.com/Chitrarthrai/FedEx-Document-Pipeline",
     category: "Personal",
     technologies: [
       "Python",
@@ -209,9 +209,9 @@ export const projects = [
     id: 3,
     title: "Neo Disha — Native App",
     des: "High-performance camera pipeline with custom Kotlin Native Module and ONNX Runtime, achieving 40% frame processing latency reduction for Reliance field operations.",
-    img: "/p3.svg",
+    img: "/p3_preview.png",
     iconLists: ["/re.svg", "/ts.svg", "/tail.svg", "/fm.svg"],
-    link: "https://github.com/Chitrarthrai",
+    link: "https://github.com/Chitrarthrai/neodisha_native",
     category: "Reliance",
     technologies: [
       "React Native",
@@ -225,9 +225,9 @@ export const projects = [
     id: 4,
     title: "Disha — Dashboard & Analytics",
     des: "Digital shelf-analytics dashboard ingesting anomaly data from Azure Blob Storage in real-time, optimizing query latency by 60% for 2M+ records.",
-    img: "/p4.svg",
+    img: "/p4_preview.png",
     iconLists: ["/re.svg", "/next.svg", "/tail.svg", "/ts.svg"],
-    link: "https://github.com/Chitrarthrai",
+    link: "https://github.com/Chitrarthrai/neo_QA",
     category: "Reliance",
     technologies: [
       "React",
@@ -243,7 +243,7 @@ export const projects = [
     des: "Cross-platform mobile app comparing prices across 7 quick commerce platforms with fuzzy search, local SQLite caching, and real-time Firebase sync.",
     img: "/p1.svg",
     iconLists: ["/re.svg", "/ts.svg", "/fm.svg"],
-    link: "https://github.com/Chitrarthrai",
+    link: "https://github.com/Chitrarthrai/CheckIt",
     category: "Personal",
     technologies: [
       "React Native",
@@ -259,7 +259,7 @@ export const projects = [
     des: "AI-powered MCP server enabling LLM agents to perform zero-shot operations on Kubernetes clusters via structured JSON-RPC schemas.",
     img: "/p2.svg",
     iconLists: ["/ts.svg", "/next.svg", "/tail.svg"],
-    link: "https://github.com/Chitrarthrai",
+    link: "https://github.com/Chitrarthrai/argo-mcp-server",
     category: "Open Source",
     technologies: [
       "TypeScript",

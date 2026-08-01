@@ -141,12 +141,12 @@ export const GithubActivityDashboard = () => {
                   return (
                     <motion.div
                       key={idx}
-                      initial={{ y: -60, opacity: 0, scale: 0.5 }}
+                      initial={{ y: -70, opacity: 0, scale: 0.4 }}
                       whileInView={{ y: 0, opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false, amount: 0.1 }}
                       transition={{
                         type: "spring",
-                        stiffness: 300,
+                        stiffness: 320,
                         damping: 18,
                         delay: fillDelay,
                       }}

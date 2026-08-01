@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { skills, workExperience } from "@/data";
+import { MatrixTextDecoder } from "./ui/MatrixTextDecoder";
 
 /**
  * ExperienceStack — Stitch "Experience & Stack" screen
@@ -59,7 +60,7 @@ const ExperienceStack = () => {
               color: "#FFFFFF",
             }}
           >
-            Technical Arsenal
+            <MatrixTextDecoder text="Technical Arsenal" className="text-gradient-stitch" />
           </h2>
         </div>
 

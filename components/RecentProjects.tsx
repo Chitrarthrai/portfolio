@@ -92,16 +92,23 @@ const RecentProjects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 [perspective:1200px]">
           {filteredProjects.map((project, idx) => {
             const catStyle = categoryStyle[project.category] || categoryStyle.Personal;
             return (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.07 }}
-                className="glass-card rounded-xl overflow-hidden flex flex-col"
+                initial={{ opacity: 0, y: 50, rotateX: 18, scale: 0.94 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: idx * 0.06,
+                }}
+                whileHover={{ rotateX: -4, rotateY: 4, scale: 1.02, zIndex: 20 }}
+                className="glass-card rounded-xl overflow-hidden flex flex-col transform-gpu transition-all"
                 onMouseMove={handleMouseMove}
               >
                 {/* Spotlight overlay */}
