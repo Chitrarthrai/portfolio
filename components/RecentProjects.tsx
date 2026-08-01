@@ -2,6 +2,7 @@
 import { projects } from "@/data";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 
 const categories = ["All", "Personal", "Reliance", "Open Source"];
@@ -119,10 +120,13 @@ const RecentProjects = () => {
                   className="relative w-full h-40 overflow-hidden"
                   style={{ background: "rgba(10,13,36,0.8)" }}
                 >
-                  <img
+                  <Image
                     src={project.img}
                     alt={project.title}
-                    className="w-full h-full object-cover object-center opacity-70 group-hover:opacity-90 transition-opacity"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
+                    className="object-cover object-center opacity-70 group-hover:opacity-90 transition-opacity"
                   />
                   {/* Category badge overlay */}
                   <div className="absolute top-3 left-3">

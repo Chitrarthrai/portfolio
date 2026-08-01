@@ -3,18 +3,29 @@ import React, { useState, useEffect } from "react";
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import dynamic from "next/dynamic";
-import RecentProjects from "@/components/RecentProjects";
-import ExperienceStack from "@/components/ExperienceStack";
-import Education from "@/components/Education";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import MetricsShowcase from "@/components/MetricsShowcase";
-import AppShowcase from "@/components/AppShowcase";
-import KineticGlowCursor from "@/components/KineticGlowCursor";
-import { AntigravityCanvas } from "@/components/ui/AntigravityCanvas";
-import { CommandPalette } from "@/components/ui/CommandPalette";
-import { GithubActivityDashboard } from "@/components/GithubActivityDashboard";
 import { navItems } from "@/data";
+
+// Fast Page Load Optimization: Lazy load heavy components below the fold
+const MetricsShowcase = dynamic(() => import("@/components/MetricsShowcase"), { ssr: true });
+const AppShowcase = dynamic(() => import("@/components/AppShowcase"), { ssr: true });
+const GithubActivityDashboard = dynamic(
+  () => import("@/components/GithubActivityDashboard").then((m) => m.GithubActivityDashboard),
+  { ssr: false }
+);
+const ExperienceStack = dynamic(() => import("@/components/ExperienceStack"), { ssr: true });
+const RecentProjects = dynamic(() => import("@/components/RecentProjects"), { ssr: true });
+const Education = dynamic(() => import("@/components/Education"), { ssr: true });
+const ContactSection = dynamic(() => import("@/components/ContactSection"), { ssr: true });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: true });
+const KineticGlowCursor = dynamic(() => import("@/components/KineticGlowCursor"), { ssr: false });
+const AntigravityCanvas = dynamic(
+  () => import("@/components/ui/AntigravityCanvas").then((m) => m.AntigravityCanvas),
+  { ssr: false }
+);
+const CommandPalette = dynamic(
+  () => import("@/components/ui/CommandPalette").then((m) => m.CommandPalette),
+  { ssr: false }
+);
 
 export default function Home() {
   const [cmdOpen, setCmdOpen] = useState(false);
