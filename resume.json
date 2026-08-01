@@ -1,0 +1,225 @@
+{
+  "personal_info": {
+    "name": "Chitrarth Rai",
+    "email": "chitrarthrai10@gmail.com",
+    "phone": "+91 7357084507",
+    "linkedin": "https://linkedin.com/in/chitrarth-rai-38a40917b",
+    "github": "https://github.com/Chitrarthrai",
+    "profile_summary": "Graduate of IIIT Bhubaneswar in Electronics & Telecommunication. Full-stack developer specializing in the MERN ecosystem and Next.js, with expertise in building scalable HR tech, digital shelf analytics, and financial dashboards. Architected, analyzed, and contributed to over 40+ distinct software projects and microservices. Proficient in leveraging advanced algorithms and cloud functions (Azure) to deliver high-performance, data-driven applications."
+  },
+  "technical_skills": {
+    "languages_frameworks": [
+      "TypeScript",
+      "Python (Flask/Django)",
+      "C++",
+      "Kotlin",
+      "JavaScript (ES6+)",
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "React Native"
+    ],
+    "databases_infrastructure": [
+      "MongoDB",
+      "PostgreSQL",
+      "Firebase",
+      "SQL",
+      "REST APIs",
+      "JSON-RPC",
+      "Azure Blob Storage",
+      "Azure Functions",
+      "Cloud Infrastructure (Azure)"
+    ],
+    "tools_practices": [
+      "Git/GitHub",
+      "Android NDK/SDK",
+      "OpenCV",
+      "OCR",
+      "OpenAI API",
+      "Performance Optimization",
+      "System Design",
+      "VAPT Hardening",
+      "SSL Pinning",
+      "Obfuscation (ProGuard)",
+      "CI/CD",
+      "Secure Mobile Authentication",
+      "High-Performance Camera Integration"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Neophyte AI",
+      "role": "Software Engineer",
+      "duration": "Feb 2025 – Present",
+      "location": "Navi Mumbai, India",
+      "highlights": [
+        {
+          "sub_project": "Neo Disha (mobile)",
+          "details": "Designed a high-performance camera pipeline using React Native and a custom Kotlin Native Module. Optimized CPU-intensive image processing passes for 12MP sensor arrays, reducing processing latency by 40%. Constructed a precision coordinate mapping system featuring a gesture-driven Reanimated UI with sub-pixel accuracy. Conducted VAPT security audits to implement remediations such as SSL certificate pinning and ProGuard log-stripping obfuscation to protect user PII. Ensured continuous integration within Reliance Environments by automating builds, tests, and deployments for seamless DevOps practices."
+        },
+        {
+          "sub_project": "NeoQCR (web & Android)",
+          "details": "Modernized legacy Android builds for latest OS versions, ensuring compatibility with custom AI inference models. Created a unified dashboard for media management and KPI visualization, incorporating real-time data streaming and interactive visualizations. Refactored the 2-step authentication flow to prevent token leakage by utilizing encryption techniques such as AES-256 and RSA public-key cryptography to enhance security. Performed VAPT audits to identify vulnerabilities and implemented fixes like rate limiting and input validation to protect against common web attacks. Utilized Reliance Environments for scalable infrastructure management, facilitating seamless deployments across multiple environments with minimal downtime."
+        },
+        {
+          "sub_project": "Disha (web)",
+          "details": "Built a shelf-analytics dashboard ingesting anomaly data from MongoDB and Azure Blob Storage; implemented real-time KPI tracking via interactive charts to improve operational visibility by 35%. Conducted VAPT security assessments to mitigate risks such as SQL injection, XSS attacks, and CSRF vulnerabilities. Leveraged Reliance Environments for robust CI/CD pipelines, ensuring efficient deployment cycles with comprehensive testing strategies."
+        },
+        {
+          "sub_project": "HRMS platform",
+          "details": "Architected an HR system with Geolocation and Facial-recognition based attendance; implemented MongoDB Aggregation Pipelines for high-speed payroll processing, reducing time by 50%. Conducted security audits to ensure compliance with GDPR and CCPA guidelines, implementing data anonymization techniques. Utilized Reliance Environments to manage diverse deployment scenarios, ensuring consistent performance across multiple regions."
+        },
+        {
+          "sub_project": "Interactive UI",
+          "details": "Integrated Three.js for 3D product showcases and created a reusable React component library to standardize analytics dashboards across initiatives. Enhanced user experience through intuitive interfaces with dynamic animations and smooth transitions. Implemented VAPT security measures such as SAST and DAST tools to detect and mitigate vulnerabilities in the codebase. Utilized Reliance Environments to streamline development, testing, and production workflows for efficient delivery cycles."
+        },
+        {
+          "sub_project": "Other Microservices & Support",
+          "details": "Contributed to additional projects including NEOQA, NEOCompliance, and Pocket AI, providing technical solutions for cross-functional teams while ensuring adherence to security best practices and leveraging Reliance Environments for scalable operations."
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "FinanceTask",
+      "category": "Personal Project",
+      "technologies": [
+        "React.js",
+        "React Native",
+        "TypeScript",
+        "Supabase Realtime API",
+        "PostgreSQL",
+        "Gemini API",
+        "Recharts",
+        "Kotlin Native Module"
+      ],
+      "points": [
+        "Architected a cross-platform (React Native/React) financial tracker leveraging real-time state synchronization via Supabase WebSockets and PostgreSQL triggers to maintain sub-100ms latency in data updates across all user devices.",
+        "Programmed a Kanban productivity dashboard utilizing Gemini AI for zero-shot Named Entity Recognition on raw user notes, extracting actionable tasks and deadlines with 95% classification accuracy, enhancing user task management efficiency.",
+        "Integrated a custom Kotlin Native Module for background SMS scraping via regex to parse offline banking transactional alerts, automating expense logging and daily spending updates for users.",
+        "Designed an interactive KPI dashboard using Recharts for real-time visualization of pocket money allocation and dynamic adjustment of daily spending limits based on savings goals and user input."
+      ]
+    },
+    {
+      "title": "FedEx Document Processing Pipeline",
+      "category": "Personal Project",
+      "technologies": [
+        "Python",
+        "OpenCV",
+        "Tesseract OCR",
+        "OpenAI API",
+        "Multiprocessing",
+        "JSON Schema Validation"
+      ],
+      "points": [
+        "Developed an automated document analysis pipeline using Tesseract OCR and OpenCV for perspective correction and thresholding to parse shipping invoices, reducing processing time by 90% through streamlined automation.",
+        "Implemented a multi-threaded batch-processing worker pool in Python to concurrently analyze multi-page PDFs, significantly reducing extraction bottlenecks with an efficiency increase of 75%."
+      ]
+    },
+    {
+      "title": "Neo Disha (Native App – Reliance Deployment)",
+      "category": "Reliance Deployment",
+      "technologies": [
+        "React Native",
+        "Kotlin Native Module",
+        "Android NDK",
+        "C++",
+        "ONNX Runtime",
+        "Reanimated",
+        "Metro Obfuscator",
+        "Firebase",
+        "SSL Pinning"
+      ],
+      "points": [
+        "Designed a high-performance multi-threaded camera pipeline in React Native using a custom Kotlin Native Module and Native C++ rendering with ONNX Runtime for real-time image sharpening, achieving frame processing latency reductions by 40%.",
+        "Remediated VAPT security vulnerabilities through SSL certificate pinning, custom Metro obfuscator-transformer rules for JS files, and dynamic credential initialization from Firebase API Keys to ensure secure application deployment.",
+        "Architected a secure two-step authentication flow (OTP and password) with transient session tokens exchanged for Firebase ID tokens, enhancing security by preventing raw PII leakage and improving user data protection. Deployed the VAPT-compliant application in the production Reliance Environment supporting daily field operations.",
+        "Implemented sub-pixel precision touch mapping and gesture-driven image cropping using React Native Reanimated and Gesture Handler to improve interaction accuracy and user experience."
+      ]
+    },
+    {
+      "title": "Disha — Blushlace & Dashboard",
+      "category": "Reliance Deployment",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB Aggregation Pipelines",
+        "Azure Blob Storage",
+        "Recharts"
+      ],
+      "points": [
+        "Developed a digital shelf-analytics dashboard ingesting anomaly data from Azure Blob Storage in real-time, optimizing query latency by 60% for over 2 million records to provide immediate insights and analytics.",
+        "Created administrative platforms tracking real-time KPIs and managing store analytics configurations with 99.9% uptime, ensuring consistent performance and reliability."
+      ]
+    },
+    {
+      "title": "CheckIt (Quick Commerce Price Comparison)",
+      "category": "Personal Project",
+      "technologies": [
+        "React Native",
+        "Expo",
+        "SQLite",
+        "Firebase Realtime Database",
+        "Serverless Functions",
+        "Fuzzy Search"
+      ],
+      "points": [
+        "Built a cross-platform mobile app aggregating and comparing prices in real-time across seven major quick commerce platforms to assist users in saving on grocery costs through efficient price comparison features.",
+        "Implemented client-side search optimization with debouncing and fuzzy matching using Expo SQLite for local caching, ensuring instant search responses even under high load conditions."
+      ]
+    },
+    {
+      "title": "Argo CD MCP Server",
+      "category": "Open Source Project",
+      "technologies": [
+        "TypeScript",
+        "Express.js",
+        "Model Context Protocol (MCP)",
+        "JSON-RPC",
+        "SSE",
+        "Stdio transport",
+        "Kubernetes API",
+        "Argo CD API"
+      ],
+      "points": [
+        "Created an AI-powered MCP server in TypeScript exposing a custom ArgoCDClient to enable LLM agents to perform zero-shot operations such as listing applications, triggering sync cycles, and fetching event logs on Kubernetes clusters using structured JSON-RPC schemas for seamless integration and automation."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "IIIT Bhubaneswar",
+      "degree": "B.Tech in Electronics & Telecommunication Engineering",
+      "duration": "2021 – 2025",
+      "location": "Bhubaneswar, India"
+    },
+    {
+      "institution": "Central Academy",
+      "degree": "Senior Secondary (Class XII)",
+      "duration": "2018 – 2020",
+      "location": "Jodhpur, India"
+    },
+    {
+      "institution": "Central Academy",
+      "degree": "Secondary School (Class X)",
+      "duration": "2016 – 2018",
+      "location": "Jodhpur, India"
+    }
+  ],
+  "additional": {
+    "interests": [
+      "Playing badminton",
+      "Deep Learning",
+      "DSA",
+      "System Design",
+      "Web Technology"
+    ],
+    "societies": [
+      "Film & Theatrical Society (FATS), IIIT Bhubaneswar",
+      "Photogeeks Society, IIIT Bhubaneswar"
+    ]
+  }
+}

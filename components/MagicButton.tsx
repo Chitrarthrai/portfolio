@@ -1,24 +1,57 @@
 import React from 'react'
 
-const MagicButton = ({
-    title, icon, position, handleClick, otherClasses
-}:{
-    title: string;
-    icon: React.ReactNode;
-    position: string;
-    handleClick?: () => void;
-    otherClasses?:string;
+interface MagicButtonProps {
+  title: string;
+  icon: React.ReactNode;
+  position: string;
+  handleClick?: () => void;
+  otherClasses?: string;
+  variant?: 'primary' | 'ghost';
+}
 
-})=> {
+/**
+ * MagicButton — Stitch Obsidian Kinetic style
+ * variant="primary" → purple-to-blue gradient with shimmer animation
+ * variant="ghost"   → glassmorphism surface button
+ */
+const MagicButton = ({
+  title, icon, position, handleClick, otherClasses, variant = 'primary'
+}: MagicButtonProps) => {
+  if (variant === 'ghost') {
+    return (
+      <button
+        className={`glass-surface inline-flex items-center justify-center gap-2 px-7 rounded-lg h-12 transition-all duration-300 active:scale-95 ${otherClasses}`}
+        style={{
+          fontFamily: "Manrope, sans-serif",
+          fontSize: "14px",
+          fontWeight: 600,
+          color: "#BEC1DD",
+          border: "1px solid rgba(255,255,255,0.1)",
+          minWidth: "160px",
+        }}
+        onClick={handleClick}
+      >
+        {position === 'left' && icon}
+        {title}
+        {position === 'right' && icon}
+      </button>
+    );
+  }
+
   return (
-    <button className="relative inline-flex h-12 w-full overflow-hidden rounded-lg p-[1px] focus:outline-none md:w-60 md:mt:10 " onClick={handleClick}>
-        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-        <span className={`inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-7 text-sm font-medium text-white backdrop-blur-3xl gap-2 ${otherClasses}`}>
-            {position==='left' && icon}
-            {title}
-            {position==='right' && icon}
-            
-        </span>
+    <button
+      className={`primary-btn inline-flex items-center justify-center gap-2 px-7 rounded-lg h-12 font-bold text-white active:scale-95 ${otherClasses}`}
+      style={{
+        fontFamily: "Manrope, sans-serif",
+        fontSize: "14px",
+        fontWeight: 700,
+        minWidth: "160px",
+      }}
+      onClick={handleClick}
+    >
+      {position === 'left' && icon}
+      {title}
+      {position === 'right' && icon}
     </button>
   )
 }

@@ -7,6 +7,7 @@ import { useState } from "react";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
+import { personalInfo, skills } from "@/data";
 
 export const BentoGrid = ({
   className,
@@ -49,24 +50,17 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    const text = "chitrarthrai10@gmail.com";
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
-  
   };
 
   
   return (
     <div
       className={cn(
-        "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.05] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+        "row-span-1 relative overflow-hidden rounded-3xl glass-card group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
         className
       )}
-      style={{
-        background: "rgb(4,7,29)",
-        backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-      }}
     >
       <div className={`${id===6 && 'flex justify-center'} h-full`}>
         <div className="w-full h-full absolute">
@@ -105,19 +99,17 @@ export const BentoGridItem = ({
         
         {id===2 && <GlobeDemo/>}
         {id===3 &&(
-          <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-            <div className="flex flex-col gap-3 md:gap-3 lg:gap-6">
-              {['C','Node.js','Express','C++'].map((item)=>(
-                <span key={item} className="py-2 lg:py-2 lg:px-2 px-2 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+          <div className="flex gap-1.5 md:gap-3 lg:gap-5 w-fit relative mt-4 md:mt-0 md:absolute md:right-0 lg:-right-2 overflow-hidden max-w-full">
+            <div className="flex flex-col gap-2 md:gap-3 lg:gap-6">
+              {skills.languagesFrameworks.slice(0, 4).map((item)=>(
+                <span key={item} className="py-1.5 lg:py-2 px-2.5 text-xs lg:text-base opacity-70 lg:opacity-100 rounded-lg text-center bg-[#10132E] border border-white/[0.08]">
                   {item}
                 </span>
               ))}
-              <span className="py-2 px-2 rounded-lg text-center bg-[#10132e]"/>
             </div>
-            <div className="flex flex-col gap-3 md:gap-3 lg:gap-6">
-            <span className="py-2 px-2 rounded-lg text-center bg-[#10132e]"/>
-              {['React.js','JavaScript','Next.js','TypeScript'].map((item)=>(
-                <span key={item} className="py-2 lg:py-2 lg:px-2 px-2 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+            <div className="flex flex-col gap-2 md:gap-3 lg:gap-6 pt-3 md:pt-0">
+              {skills.languagesFrameworks.slice(4, 8).map((item)=>(
+                <span key={item} className="py-1.5 lg:py-2 px-2.5 text-xs lg:text-base opacity-70 lg:opacity-100 rounded-lg text-center bg-[#10132E] border border-white/[0.08]">
                   {item}
                 </span>
               ))}
