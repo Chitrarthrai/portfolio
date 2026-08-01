@@ -207,7 +207,7 @@ const RecentProjects = () => {
                             transform: `translateX(-${i * 8}px)`,
                           }}
                         >
-                          <img src={icon} alt={icon} className="p-1.5 w-full h-full" />
+                          <Image src={icon} alt={icon} width={28} height={28} className="p-1.5 object-contain" />
                         </div>
                       ))}
                     </div>

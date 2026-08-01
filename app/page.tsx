@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import dynamic from "next/dynamic";
 import { navItems } from "@/data";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 // Fast Page Load Optimization: Lazy load heavy components below the fold
 const MetricsShowcase = dynamic(() => import("@/components/MetricsShowcase"), { ssr: true });
@@ -24,6 +25,10 @@ const AntigravityCanvas = dynamic(
 );
 const CommandPalette = dynamic(
   () => import("@/components/ui/CommandPalette").then((m) => m.CommandPalette),
+  { ssr: false }
+);
+const AnimatedMeshGradient = dynamic(
+  () => import("@/components/ui/AnimatedMeshGradient").then((m) => m.AnimatedMeshGradient),
   { ssr: false }
 );
 
@@ -50,6 +55,10 @@ export default function Home() {
     <main className="relative flex flex-col justify-start items-center w-full min-h-screen" style={{ backgroundColor: "#000319" }}>
       {/* Stitch: fixed ambient background grid & interactive particle canvas */}
       <div className="bg-grid-stitch" aria-hidden="true" />
+
+      {/* Animated gradient mesh — cinematic drifting colour orbs */}
+      <AnimatedMeshGradient />
+
       <AntigravityCanvas className="fixed inset-0 opacity-40" />
 
       {/* Stitch: kinetic cursor glow */}
@@ -68,37 +77,53 @@ export default function Home() {
 
       {/* Page sections — Stitch narrative order */}
       <div className="w-full z-10 flex flex-col items-center">
-        {/* 1. Hero */}
+        {/* 1. Hero — no reveal, always visible */}
         <Hero />
 
         {/* 2. Engineering Impact (Metrics Bento) */}
-        <MetricsShowcase />
+        <ScrollReveal preset="fade-up" delay={0.05} className="w-full">
+          <MetricsShowcase />
+        </ScrollReveal>
 
         {/* 3. App Showcase */}
-        <AppShowcase />
+        <ScrollReveal preset="blur-in" delay={0.05} className="w-full">
+          <AppShowcase />
+        </ScrollReveal>
 
         {/* 4. GitHub Live Activity Dashboard */}
-        <GithubActivityDashboard />
+        <ScrollReveal preset="fade-up" delay={0.05} className="w-full">
+          <GithubActivityDashboard />
+        </ScrollReveal>
 
         {/* 5. Experience + Technical Arsenal (merged) */}
-        <ExperienceStack />
+        <ScrollReveal preset="fade-left" delay={0.05} className="w-full">
+          <ExperienceStack />
+        </ScrollReveal>
 
         {/* 6. About / Tech Bento Grid */}
-        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 2xl:px-24">
+        <ScrollReveal preset="zoom-in" delay={0.05} className="w-full px-4 sm:px-6 md:px-10 lg:px-16 2xl:px-24">
           <Grid />
-        </div>
+        </ScrollReveal>
 
         {/* 7. Projects */}
-        <RecentProjects />
+        <ScrollReveal preset="fade-up" delay={0.05} className="w-full">
+          <RecentProjects />
+        </ScrollReveal>
 
         {/* 8. Education */}
-        <Education />
+        <ScrollReveal preset="fade-right" delay={0.05} className="w-full">
+          <Education />
+        </ScrollReveal>
 
         {/* 9. Initiate Contact Hub */}
-        <ContactSection />
+        <ScrollReveal preset="blur-in" delay={0.05} className="w-full">
+          <ContactSection />
+        </ScrollReveal>
 
         {/* 10. Footer */}
-        <Footer />
+        <ScrollReveal preset="fade-up" delay={0.05} className="w-full">
+          <Footer />
+        </ScrollReveal>
       </div>
     </main>
   );

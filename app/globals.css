@@ -77,6 +77,44 @@
 }
 
 /* =====================================================
+   ANIMATED MESH GRADIENT ORBS
+   ===================================================== */
+
+@keyframes mesh-drift {
+  0%   { transform: translate(0,    0)    scale(1);    }
+  20%  { transform: translate(6%,  -4%)   scale(1.04); }
+  40%  { transform: translate(-3%,  7%)   scale(0.97); }
+  60%  { transform: translate(8%,   3%)   scale(1.06); }
+  80%  { transform: translate(-5%, -6%)   scale(0.99); }
+  100% { transform: translate(0,    0)    scale(1);    }
+}
+
+.mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: mesh-drift linear infinite;
+  will-change: transform;
+  filter: blur(1px);
+}
+
+/* =====================================================
+   SECTION SCROLL-REVEAL (CSS fallback)
+   ===================================================== */
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* =====================================================
    STITCH OBSIDIAN KINETIC — CSS UTILITY CLASSES
    ===================================================== */
 

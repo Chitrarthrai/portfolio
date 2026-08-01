@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "@/data";
 
@@ -194,12 +194,12 @@ const CLITerminal = () => {
 
   const tabs = ["--info", "--stack", "--reliance", "--contact"];
 
-  const outputMap: Record<string, string> = {
+  const outputMap = useMemo<Record<string, string>>(() => ({
     "--info": "Chitrarth Rai · Software Engineer @ Neophyte AI · React Native & MERN Full-Stack Specialist",
     "--stack": "React Native | TypeScript | Node.js | MongoDB | Kotlin | C++ | Azure | Next.js",
     "--reliance": "Building enterprise mobile & web apps for Reliance Retail · 40+ microservices shipped",
     "--contact": `Email: ${personalInfo.email} | GitHub: github.com/Chitrarthrai | LinkedIn: linkedin.com/in/chitrarth-rai-38a40917b`,
-  };
+  }), []);
 
   const playClickSound = () => {
     try {
@@ -250,7 +250,7 @@ const CLITerminal = () => {
     }
 
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, activeTab]);
+  }, [displayedText, isDeleting, activeTab, outputMap]);
 
   // When activeTab changes manually, reset typing state immediately
   const handleTabChange = (tab: string) => {
