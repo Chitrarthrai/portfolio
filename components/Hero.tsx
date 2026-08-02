@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { personalInfo } from "@/data";
 
 const cliLines = [
@@ -344,9 +344,36 @@ const CLITerminal = () => {
 };
 
 const Hero = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Mouse parallax — smooth spring physics per layer
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const springConfig = { stiffness: 80, damping: 20, mass: 0.5 };
+  const springX = useSpring(rawX, springConfig);
+  const springY = useSpring(rawY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = heroRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    // Normalise to [-1, 1]
+    rawX.set(((e.clientX - cx) / rect.width) * 2);
+    rawY.set(((e.clientY - cy) / rect.height) * 2);
+  };
+
+  const handleMouseLeave = () => {
+    rawX.set(0);
+    rawY.set(0);
+  };
+
   return (
     <section
       id="hero"
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="relative w-full min-h-screen flex flex-col"
       style={{ backgroundColor: "#000319" }}
     >
@@ -378,25 +405,32 @@ const Hero = () => {
           </span>
         </div>
 
-        {/* Main headline with Framer Motion Spring Stagger */}
+        {/* Main headline with Framer Motion Spring Stagger + Mouse Parallax */}
         <motion.h1
           initial={{ opacity: 0, y: 30, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mb-6 leading-tight"
           style={{
+            // Parallax: headline moves 6px
+            x: springX ? (springX as any) : undefined,
+            y: springY ? (springY as any) : undefined,
+          }}
+          className="max-w-4xl mb-6 leading-tight"
+        >
+          <span style={{
             fontFamily: "Manrope, sans-serif",
             fontSize: "clamp(36px, 6vw, 72px)",
             fontWeight: 800,
             letterSpacing: "-0.03em",
             lineHeight: 1.1,
             color: "#FFFFFF",
-          }}
-        >
-          Building Scalable,{" "}
-          <br className="hidden md:block" />
-          <span className="text-gradient-stitch">
-            Data-Driven Applications
+            display: "block",
+          }}>
+            Building Scalable,{" "}
+            <br className="hidden md:block" />
+            <span className="text-gradient-stitch">
+              Data-Driven Applications
+            </span>
           </span>
         </motion.h1>
 

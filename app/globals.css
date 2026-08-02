@@ -115,6 +115,24 @@
 }
 
 /* =====================================================
+   TESTIMONIALS MARQUEE — infinite scroll
+   ===================================================== */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* =====================================================
    STITCH OBSIDIAN KINETIC — CSS UTILITY CLASSES
    ===================================================== */
 

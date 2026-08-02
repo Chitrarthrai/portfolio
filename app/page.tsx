@@ -5,6 +5,7 @@ import { FloatingNav } from "@/components/ui/FloatingNav";
 import dynamic from "next/dynamic";
 import { navItems } from "@/data";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 
 // Fast Page Load Optimization: Lazy load heavy components below the fold
 const MetricsShowcase = dynamic(() => import("@/components/MetricsShowcase"), { ssr: true });
@@ -31,6 +32,16 @@ const AnimatedMeshGradient = dynamic(
   () => import("@/components/ui/AnimatedMeshGradient").then((m) => m.AnimatedMeshGradient),
   { ssr: false }
 );
+const AvailabilityBanner = dynamic(
+  () => import("@/components/ui/AvailabilityBanner").then((m) => m.AvailabilityBanner),
+  { ssr: false }
+);
+const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: true });
+const CareerTimeline = dynamic(() => import("@/components/ui/CareerTimeline").then((m) => m.CareerTimeline), { ssr: true });
+const AIChatWidget = dynamic(
+  () => import("@/components/ui/AIChatWidget").then((m) => m.AIChatWidget),
+  { ssr: false }
+);
 
 export default function Home() {
   const [cmdOpen, setCmdOpen] = useState(false);
@@ -53,6 +64,12 @@ export default function Home() {
 
   return (
     <main className="relative flex flex-col justify-start items-center w-full min-h-screen" style={{ backgroundColor: "#000319" }}>
+      {/* Scroll progress bar — fixed gradient line at top */}
+      <ScrollProgressBar />
+
+      {/* Availability banner — dismissible slim top bar */}
+      <AvailabilityBanner />
+
       {/* Stitch: fixed ambient background grid & interactive particle canvas */}
       <div className="bg-grid-stitch" aria-hidden="true" />
 
@@ -115,6 +132,16 @@ export default function Home() {
           <Education />
         </ScrollReveal>
 
+        {/* 8.5 Career Timeline */}
+        <ScrollReveal preset="blur-in" delay={0.05} className="w-full">
+          <CareerTimeline />
+        </ScrollReveal>
+
+        {/* 8.6 Testimonials */}
+        <ScrollReveal preset="fade-up" delay={0.05} className="w-full">
+          <Testimonials />
+        </ScrollReveal>
+
         {/* 9. Initiate Contact Hub */}
         <ScrollReveal preset="blur-in" delay={0.05} className="w-full">
           <ContactSection />
@@ -125,6 +152,9 @@ export default function Home() {
           <Footer />
         </ScrollReveal>
       </div>
+
+      {/* AI Chat Widget — floating bottom-right */}
+      <AIChatWidget />
     </main>
   );
 }

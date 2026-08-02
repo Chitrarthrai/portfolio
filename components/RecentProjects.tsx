@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
+import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 
 const categories = ["All", "Personal", "Reliance", "Open Source"];
 
@@ -15,6 +16,7 @@ const categoryStyle: Record<string, { color: string; bg: string; border: string 
 
 const RecentProjects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const filteredProjects =
     activeCategory === "All"
@@ -109,8 +111,9 @@ const RecentProjects = () => {
                   delay: idx * 0.06,
                 }}
                 whileHover={{ rotateX: -4, rotateY: 4, scale: 1.02, zIndex: 20 }}
-                className="glass-card rounded-xl overflow-hidden flex flex-col transform-gpu transition-all"
+                className="glass-card rounded-xl overflow-hidden flex flex-col transform-gpu transition-all cursor-pointer group"
                 onMouseMove={handleMouseMove}
+                onClick={() => setSelectedProject(project)}
               >
                 {/* Spotlight overlay */}
                 <div className="radial-spotlight" />
@@ -128,6 +131,23 @@ const RecentProjects = () => {
                     loading="lazy"
                     className="object-cover object-center opacity-70 group-hover:opacity-90 transition-opacity"
                   />
+                  {/* Case study hover overlay */}
+                  <div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "rgba(0,3,25,0.6)", backdropFilter: "blur(4px)" }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "JetBrains Mono, monospace",
+                        fontSize: "12px",
+                        fontWeight: 700,
+                        letterSpacing: "0.08em",
+                        color: "#cbacf9",
+                      }}
+                    >
+                      ↗ Read Case Study
+                    </span>
+                  </div>
                   {/* Category badge overlay */}
                   <div className="absolute top-3 left-3">
                     <span
@@ -236,6 +256,12 @@ const RecentProjects = () => {
           })}
         </div>
       </div>
+
+      {/* Case Study Drawer */}
+      <ProjectCaseStudy
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };
