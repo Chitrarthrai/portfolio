@@ -91,6 +91,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (globeRef.current) {
       _buildData();
@@ -148,6 +149,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     setGlobeData(filteredPoints);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (globeRef.current && globeData) {
       globeRef.current
@@ -202,6 +204,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       );
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!globeRef.current || !globeData) return;
 
@@ -233,6 +236,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
