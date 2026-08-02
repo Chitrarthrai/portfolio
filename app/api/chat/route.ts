@@ -76,17 +76,34 @@ export async function POST(req: NextRequest) {
       },
     };
 
-    const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestBody),
-      }
-    );
+    const modelsToTry = ["gemini-2.5-flash", "gemini-flash-latest"];
+    let geminiRes: Response | null = null;
+    let lastError = "";
 
-    if (!geminiRes.ok) {
-      throw new Error(`Gemini API error: ${geminiRes.status}`);
+    for (const model of modelsToTry) {
+      try {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestBody),
+          }
+        );
+        if (res.ok) {
+          geminiRes = res;
+          break;
+        } else {
+          const errText = await res.text();
+          lastError = `[${model}] Status ${res.status}: ${errText}`;
+        }
+      } catch (err: any) {
+        lastError = `[${model}] Fetch error: ${err?.message || err}`;
+      }
+    }
+
+    if (!geminiRes) {
+      throw new Error(`All Gemini models failed. Last error: ${lastError}`);
     }
 
     const geminiData = await geminiRes.json();
