@@ -89,10 +89,10 @@ export const AIChatWidget = () => {
       {/* Floating trigger button */}
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 2, type: "spring", stiffness: 300, damping: 20 }}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
+        animate={{ scale: open ? 0 : 1, opacity: open ? 0 : 1 }}
+        transition={{ delay: open ? 0 : 2, type: "spring", stiffness: 300, damping: 20 }}
+        whileHover={{ scale: open ? 0 : 1.08 }}
+        whileTap={{ scale: open ? 0 : 0.95 }}
         onClick={() => setOpen(true)}
         className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-[6000] flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl shadow-2xl cursor-pointer"
         style={{
@@ -101,9 +101,11 @@ export const AIChatWidget = () => {
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
           boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 16px rgba(203,172,249,0.2)",
-          display: open ? "none" : "flex",
+          pointerEvents: open ? "none" : "auto",
         }}
         aria-label="Ask Chitrarth AI"
+        aria-hidden={open}
+        tabIndex={open ? -1 : 0}
       >
         <FaRobot size={16} color="#cbacf9" />
         <span
@@ -141,10 +143,15 @@ export const AIChatWidget = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 z-[6000] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+          className="fixed z-[6000] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
             style={{
+              /* Mobile: full-width centered, above bottom nav */
+              bottom: "80px",
+              left: "12px",
+              right: "12px",
+              /* Desktop: anchored to bottom-right */
               width: "min(380px, calc(100vw - 24px))",
-              height: "min(520px, calc(100vh - 110px))",
+              height: "min(520px, calc(100vh - 100px))",
               background: "linear-gradient(180deg, #0d1028 0%, #060918 100%)",
               border: "1px solid rgba(203,172,249,0.25)",
               boxShadow: "0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(203,172,249,0.15)",
