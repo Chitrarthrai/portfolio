@@ -94,11 +94,13 @@ export const AIChatWidget = () => {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-[70] flex items-center gap-2.5 px-4 py-3 rounded-2xl shadow-2xl"
+        className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-[6000] flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl shadow-2xl cursor-pointer"
         style={{
-          background: "linear-gradient(135deg, rgba(203,172,249,0.2) 0%, rgba(96,165,250,0.15) 100%)",
-          border: "1px solid rgba(203,172,249,0.3)",
+          background: "linear-gradient(135deg, rgba(203,172,249,0.25) 0%, rgba(96,165,250,0.2) 100%)",
+          border: "1px solid rgba(203,172,249,0.35)",
           backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 16px rgba(203,172,249,0.2)",
           display: open ? "none" : "flex",
         }}
         aria-label="Ask Chitrarth AI"
@@ -116,6 +118,7 @@ export const AIChatWidget = () => {
           Ask Chitrarth AI
         </span>
         <span
+          className="hidden sm:inline-block"
           style={{
             fontFamily: "JetBrains Mono, monospace",
             fontSize: "9px",
@@ -138,13 +141,13 @@ export const AIChatWidget = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="fixed bottom-6 right-6 z-[70] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+            className="fixed bottom-20 right-3 left-3 sm:left-auto sm:right-6 z-[6000] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
             style={{
               width: "min(380px, calc(100vw - 24px))",
-              height: "min(520px, calc(100vh - 120px))",
+              height: "min(520px, calc(100vh - 110px))",
               background: "linear-gradient(180deg, #0d1028 0%, #060918 100%)",
-              border: "1px solid rgba(203,172,249,0.2)",
-              boxShadow: "0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(203,172,249,0.1)",
+              border: "1px solid rgba(203,172,249,0.25)",
+              boxShadow: "0 24px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(203,172,249,0.15)",
             }}
           >
             {/* Header */}
