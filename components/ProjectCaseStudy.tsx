@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaTimes, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaTimes, FaExternalLinkAlt, FaAndroid, FaGlobe } from "react-icons/fa";
 import { projects } from "@/data";
 
 type Project = typeof projects[0];
@@ -47,6 +47,17 @@ const caseStudyData: Record<number, {
     solution: "Built an open-source MCP (Model Context Protocol) server exposing Argo CD operations via structured JSON-RPC schemas. LLM agents can now perform zero-shot cluster operations with full type safety and predictable outputs.",
     impact: ["Zero-shot Kubernetes operations via LLM agents — no shell access needed", "Structured JSON-RPC schema prevents malformed cluster commands", "Open-source — community adoption and contributions", "Compatible with Claude, GPT-4, and Gemini via MCP protocol"],
     architecture: "TypeScript + Express.js → MCP Protocol → JSON-RPC schema → Argo CD REST API → Kubernetes cluster",
+  },
+  7: {
+    problem: "Modern team collaboration is fragmented across disparate apps: video conferencing (Google Meet/Zoom), fast multimedia messaging (Telegram), persistent channels (Slack/Teams), and AI meeting notes exist in siloed platforms with high context switching costs.",
+    solution: "Architecting ChatX — an all-in-one industrial-grade communication suite combining WebRTC SFU video conferencing, Supabase Realtime messaging, Telegram-grade media features (circular video notes, audio waveform players, auto-delete TTL channels, interactive spoilers), and Gemini AI meeting intelligence.",
+    impact: [
+      "Currently under active development across Next.js (Web) and React Native / Expo (Mobile)",
+      "WebRTC SFU streaming architecture with live stages and screen sharing",
+      "Sub-100ms real-time messaging, presence indicators, and Supabase RLS security guard",
+      "Telegram-grade suite: circular video notes, waveform audio player, and auto-delete TTL channels",
+    ],
+    architecture: "Next.js + React Native → WebRTC SFU → Supabase PostgreSQL & Realtime → Zustand & TanStack Query → Gemini AI Meeting Intelligence",
   },
 };
 
@@ -145,6 +156,98 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ project, onC
                   <FaTimes size={16} color="rgba(255,255,255,0.6)" />
                 </button>
               </div>
+
+              {/* Under Development Banner */}
+              {project.isUnderDevelopment && (
+                <div
+                  className="flex flex-wrap items-center gap-3 p-3.5 mb-6 rounded-xl"
+                  style={{
+                    background: "rgba(251,191,36,0.06)",
+                    border: "1px solid rgba(251,191,36,0.25)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "JetBrains Mono, monospace",
+                      fontSize: "10px",
+                      fontWeight: 700,
+                      color: "#FBBF24",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    STATUS:
+                  </span>
+                  <span
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-lg text-xs font-bold"
+                    style={{
+                      fontFamily: "JetBrains Mono, monospace",
+                      color: "#FBBF24",
+                      background: "rgba(251,191,36,0.15)",
+                      border: "1px solid rgba(251,191,36,0.35)",
+                    }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                    Under Active Development (Next.js Monorepo + React Native / Expo)
+                  </span>
+                </div>
+              )}
+
+              {/* Live Links / Deployment Banner */}
+              {(project.liveUrl || project.appUrl) && (
+                <div
+                  className="flex flex-wrap items-center gap-3 p-3.5 mb-6 rounded-xl"
+                  style={{
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "JetBrains Mono, monospace",
+                      fontSize: "10px",
+                      fontWeight: 700,
+                      color: "#BEC1DD",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    LIVE ACCESS & BUILDS:
+                  </span>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all hover:scale-105"
+                      style={{
+                        fontFamily: "JetBrains Mono, monospace",
+                        color: "#34D399",
+                        background: "rgba(52,211,153,0.15)",
+                        border: "1px solid rgba(52,211,153,0.35)",
+                      }}
+                    >
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      Live Web App: {project.liveUrl.replace("https://", "").replace(/\/$/, "")} ↗
+                    </a>
+                  )}
+                  {project.appUrl && (
+                    <a
+                      href={project.appUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all hover:scale-105"
+                      style={{
+                        fontFamily: "JetBrains Mono, monospace",
+                        color: "#a4c9ff",
+                        background: "rgba(164,201,255,0.15)",
+                        border: "1px solid rgba(164,201,255,0.35)",
+                      }}
+                    >
+                      <FaAndroid size={14} />
+                      Android APK Releases ↗
+                    </a>
+                  )}
+                </div>
+              )}
 
               {/* Tech stack badges */}
               <div className="flex flex-wrap gap-2 mb-8">
@@ -249,6 +352,56 @@ export const ProjectCaseStudy: React.FC<ProjectCaseStudyProps> = ({ project, onC
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105"
+                    style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontSize: "14px",
+                      background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                      color: "#FFFFFF",
+                      boxShadow: "0 0 24px rgba(16,185,129,0.35)",
+                    }}
+                  >
+                    <FaGlobe size={16} /> Open Live Web App ↗
+                  </a>
+                )}
+                {project.appUrl && (
+                  <a
+                    href={project.appUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105"
+                    style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontSize: "14px",
+                      background: "rgba(164,201,255,0.12)",
+                      border: "1px solid rgba(164,201,255,0.35)",
+                      color: "#a4c9ff",
+                      boxShadow: "0 0 20px rgba(164,201,255,0.15)",
+                    }}
+                  >
+                    <FaAndroid size={17} /> Download Mobile App (APK) ↗
+                  </a>
+                )}
+                {project.isUnderDevelopment && (
+                  <div
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl font-bold"
+                    style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontSize: "14px",
+                      background: "rgba(251,191,36,0.12)",
+                      border: "1px solid rgba(251,191,36,0.3)",
+                      color: "#FBBF24",
+                    }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                    Under Active Development
+                  </div>
+                )}
                 <a
                   href={project.link}
                   target="_blank"

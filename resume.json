@@ -85,6 +85,9 @@
     {
       "title": "FinanceTask",
       "category": "Personal Project",
+      "github_url": "https://github.com/Chitrarthrai/FinanceTask",
+      "live_url": "https://finance-task-ten.vercel.app/",
+      "app_url": "https://github.com/Chitrarthrai/FinanceTask/releases",
       "technologies": [
         "React.js",
         "React Native",
@@ -100,6 +103,29 @@
         "Programmed a Kanban productivity dashboard utilizing Gemini AI for zero-shot Named Entity Recognition on raw user notes, extracting actionable tasks and deadlines with 95% classification accuracy, enhancing user task management efficiency.",
         "Integrated a custom Kotlin Native Module for background SMS scraping via regex to parse offline banking transactional alerts, automating expense logging and daily spending updates for users.",
         "Designed an interactive KPI dashboard using Recharts for real-time visualization of pocket money allocation and dynamic adjustment of daily spending limits based on savings goals and user input."
+      ]
+    },
+    {
+      "title": "ChatX",
+      "category": "Personal Project (Under Active Development)",
+      "status": "Under Active Development",
+      "github_url": "https://github.com/Chitrarthrai/ChatX",
+      "technologies": [
+        "Next.js (App Router)",
+        "React Native (Expo Router)",
+        "TypeScript",
+        "WebRTC SFU",
+        "Supabase Realtime",
+        "PostgreSQL",
+        "Zustand",
+        "Tailwind CSS",
+        "Gemini API"
+      ],
+      "points": [
+        "Architecting an industrial-grade video conferencing and team collaboration platform combining WebRTC SFU streaming with sub-100ms real-time chat powered by Supabase Realtime.",
+        "Developing unified cross-platform clients in a monorepo using Next.js (App Router, Tailwind CSS, shadcn/ui) for Web and React Native with Expo Router for iOS and Android.",
+        "Engineered Telegram-grade features including circular video note recording and playback, interactive 24-bar audio waveform player, mosaic media albums, and self-destructing TTL channels with content protection guard.",
+        "Integrating Gemini AI for real-time meeting intelligence, automated transcription summaries, and action item extraction."
       ]
     },
     {

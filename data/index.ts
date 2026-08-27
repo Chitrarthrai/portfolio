@@ -173,7 +173,22 @@ export const skills = {
   ],
 };
 
-export const projects = [
+export interface ProjectItem {
+  id: number;
+  title: string;
+  des: string;
+  img: string;
+  iconLists: string[];
+  link: string;
+  liveUrl?: string;
+  appUrl?: string;
+  category: string;
+  technologies: string[];
+  isUnderDevelopment?: boolean;
+  statusText?: string;
+}
+
+export const projects: ProjectItem[] = [
   {
     id: 1,
     title: "FinanceTask",
@@ -181,6 +196,8 @@ export const projects = [
     img: "/p1_preview.png",
     iconLists: ["/re.svg", "/ts.svg", "/next.svg", "/tail.svg"],
     link: "https://github.com/Chitrarthrai/FinanceTask",
+    liveUrl: "https://finance-task-ten.vercel.app/",
+    appUrl: "https://github.com/Chitrarthrai/FinanceTask/releases",
     category: "Personal",
     technologies: [
       "React Native",
@@ -188,6 +205,25 @@ export const projects = [
       "Supabase",
       "Gemini API",
       "Recharts",
+    ],
+  },
+  {
+    id: 7,
+    title: "ChatX — Video & Collaboration Suite",
+    des: "Industrial-grade video conferencing & team collaboration platform with WebRTC SFU streaming, Supabase Realtime messaging, Telegram-grade circular video notes, and AI meeting intelligence.",
+    img: "/chatx_preview.png",
+    iconLists: ["/next.svg", "/re.svg", "/ts.svg", "/tail.svg"],
+    link: "https://github.com/Chitrarthrai/ChatX",
+    category: "Personal",
+    isUnderDevelopment: true,
+    statusText: "Under Active Development",
+    technologies: [
+      "Next.js",
+      "React Native",
+      "TypeScript",
+      "WebRTC",
+      "Supabase",
+      "Zustand",
     ],
   },
   {

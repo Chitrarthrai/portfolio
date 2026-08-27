@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { personalInfo, projects, skills } from "@/data";
-import { FaSearch, FaTimes, FaTerminal, FaCode, FaEnvelope, FaFileDownload, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import { FaSearch, FaTimes, FaTerminal, FaCode, FaEnvelope, FaFileDownload, FaVolumeUp, FaVolumeMute, FaGlobe, FaAndroid } from "react-icons/fa";
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -74,6 +74,36 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       action: () => {
         navigator.clipboard.writeText(personalInfo.email);
         alert("Email copied to clipboard!");
+        onClose();
+      },
+    },
+    {
+      id: "open-financetask-web",
+      title: "Launch FinanceTask Live Web App",
+      category: "Live Projects",
+      icon: <FaGlobe className="text-emerald-400" />,
+      action: () => {
+        window.open("https://finance-task-ten.vercel.app/", "_blank");
+        onClose();
+      },
+    },
+    {
+      id: "download-financetask-apk",
+      title: "Download FinanceTask Android App (APK)",
+      category: "Live Projects",
+      icon: <FaAndroid className="text-blue-400" />,
+      action: () => {
+        window.open("https://github.com/Chitrarthrai/FinanceTask/releases", "_blank");
+        onClose();
+      },
+    },
+    {
+      id: "view-chatx-repo",
+      title: "View ChatX Platform Repo (In Development)",
+      category: "Projects",
+      icon: <FaCode className="text-amber-400" />,
+      action: () => {
+        window.open("https://github.com/Chitrarthrai/ChatX", "_blank");
         onClose();
       },
     },

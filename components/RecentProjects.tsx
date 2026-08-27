@@ -3,7 +3,7 @@ import { projects } from "@/data";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaGlobe, FaAndroid, FaExternalLinkAlt } from "react-icons/fa";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
 
 const categories = ["All", "Personal", "Reliance", "Open Source"];
@@ -165,6 +165,44 @@ const RecentProjects = () => {
                       {project.category.toUpperCase()}
                     </span>
                   </div>
+                  {/* Status Badge: Under Development OR Live Web */}
+                  {project.isUnderDevelopment ? (
+                    <div className="absolute top-3 right-3 z-10">
+                      <span
+                        className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide"
+                        style={{
+                          color: "#FBBF24",
+                          background: "rgba(251,191,36,0.18)",
+                          border: "1px solid rgba(251,191,36,0.45)",
+                          backdropFilter: "blur(6px)",
+                        }}
+                        title="Under Active Development"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                        UNDER DEVELOPMENT
+                      </span>
+                    </div>
+                  ) : project.liveUrl ? (
+                    <div className="absolute top-3 right-3 z-10">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wide transition-transform hover:scale-105"
+                        style={{
+                          color: "#34D399",
+                          background: "rgba(52,211,153,0.18)",
+                          border: "1px solid rgba(52,211,153,0.4)",
+                          backdropFilter: "blur(6px)",
+                        }}
+                        title="Live Production Web App"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        LIVE WEB ↗
+                      </a>
+                    </div>
+                  ) : null}
                 </div>
 
                 {/* Card body */}
@@ -214,9 +252,9 @@ const RecentProjects = () => {
                   </div>
 
                   {/* Footer row */}
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t gap-2" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
                     {/* Stack icons */}
-                    <div className="flex items-center">
+                    <div className="flex items-center shrink-0">
                       {project.iconLists.slice(0, 4).map((icon, i) => (
                         <div
                           key={icon}
@@ -232,23 +270,81 @@ const RecentProjects = () => {
                       ))}
                     </div>
 
-                    {/* GitHub link */}
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 transition-all duration-200 hover:translate-y-[-2px]"
-                      style={{
-                        fontFamily: "JetBrains Mono, monospace",
-                        fontSize: "11px",
-                        fontWeight: 700,
-                        color: "#cbacf9",
-                        letterSpacing: "0.06em",
-                      }}
-                    >
-                      <FaGithub size={14} />
-                      GITHUB ↗
-                    </a>
+                    {/* Action Links */}
+                    <div className="flex items-center gap-2 flex-wrap justify-end">
+                      {project.isUnderDevelopment && (
+                        <span
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-bold"
+                          style={{
+                            color: "#FBBF24",
+                            background: "rgba(251,191,36,0.12)",
+                            border: "1px solid rgba(251,191,36,0.3)",
+                          }}
+                        >
+                          IN PROGRESS
+                        </span>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 px-2 py-1 rounded transition-all hover:scale-105"
+                          style={{
+                            fontFamily: "JetBrains Mono, monospace",
+                            fontSize: "10px",
+                            fontWeight: 700,
+                            color: "#34D399",
+                            background: "rgba(52,211,153,0.12)",
+                            border: "1px solid rgba(52,211,153,0.3)",
+                          }}
+                          title="Open Live Web Application"
+                        >
+                          <FaGlobe size={11} />
+                          WEB ↗
+                        </a>
+                      )}
+                      {project.appUrl && (
+                        <a
+                          href={project.appUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 px-2 py-1 rounded transition-all hover:scale-105"
+                          style={{
+                            fontFamily: "JetBrains Mono, monospace",
+                            fontSize: "10px",
+                            fontWeight: 700,
+                            color: "#a4c9ff",
+                            background: "rgba(164,201,255,0.12)",
+                            border: "1px solid rgba(164,201,255,0.3)",
+                          }}
+                          title="Download Android Releases (APK)"
+                        >
+                          <FaAndroid size={11} />
+                          APK ↗
+                        </a>
+                      )}
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 transition-all duration-200 hover:translate-y-[-2px]"
+                        style={{
+                          fontFamily: "JetBrains Mono, monospace",
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          color: "#cbacf9",
+                          letterSpacing: "0.06em",
+                        }}
+                        title="View Source on GitHub"
+                      >
+                        <FaGithub size={13} />
+                        GITHUB ↗
+                      </a>
+                    </div>
                   </div>
                 </div>
               </motion.div>

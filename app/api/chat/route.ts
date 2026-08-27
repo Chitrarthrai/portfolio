@@ -25,10 +25,11 @@ TECHNICAL SKILLS:
 KEY PROJECTS:
 1. Neo Disha (Reliance Production) — React Native + Kotlin Native Module + C++ ONNX Runtime camera pipeline. 40% latency reduction, VAPT compliant, deployed to 12MP Reliance field devices.
 2. Disha Dashboard (Reliance) — React + Node.js analytics dashboard with MongoDB Aggregation Pipelines. 60% query optimization for 2M+ records, Azure Blob Storage integration.
-3. FinanceTask (Personal) — Cross-platform React Native + React.js financial tracker. <100ms sync via Supabase WebSockets, 95% AI entity recognition, Kotlin SMS scraping.
+3. FinanceTask (Personal) — Cross-platform React Native + React.js financial tracker with real-time sync via Supabase WebSockets, Gemini AI for expense note extraction, and Kotlin SMS scraping. Live Web App: https://finance-task-ten.vercel.app/ | Mobile App Releases (APK): https://github.com/Chitrarthrai/FinanceTask/releases | GitHub: https://github.com/Chitrarthrai/FinanceTask
 4. FedEx Document Pipeline — Python + OpenCV + Tesseract OCR automated invoice pipeline. 90% processing time reduction.
 5. CheckIt — Expo React Native price comparison across 7 quick commerce platforms with SQLite caching.
 6. Argo MCP Server (Open Source) — TypeScript MCP server for zero-shot LLM control of Kubernetes/Argo CD clusters via JSON-RPC.
+7. ChatX (Personal / Under Active Development) — Industrial-grade video conferencing and team collaboration platform combining WebRTC SFU video, Supabase Realtime messaging, Telegram-grade media features (circular video notes, audio waveform players, auto-delete TTL channels), and Gemini AI meeting intelligence. GitHub: https://github.com/Chitrarthrai/ChatX
 
 ENGINEERING IMPACT (MEASURABLE):
 - 40+ microservices shipped at Reliance Retail

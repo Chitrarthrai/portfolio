@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1335"/>
+      <stop offset="50%" stop-color="#070a1e"/>
+      <stop offset="100%" stop-color="#020410"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbacf9" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#60a5fa" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#f3ebff"/>
+      <stop offset="100%" stop-color="#cbacf9"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="subtleGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Outer Glow -->
+  <rect x="32" y="32" width="448" height="448" rx="116" fill="#7c3aed" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Main Squircle Background -->
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="14"/>
+
+  <!-- Inner Tech Ambient Circles -->
+  <circle cx="256" cy="256" r="165" stroke="#cbacf9" stroke-opacity="0.09" stroke-width="2" fill="none"/>
+  <circle cx="256" cy="256" r="115" stroke="#38bdf8" stroke-opacity="0.09" stroke-width="2" stroke-dasharray="10 10" fill="none"/>
+
+  <!-- Left Code Bracket Accent < -->
+  <path d="M125 210 L85 256 L125 302" stroke="#38bdf8" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9" filter="url(#subtleGlow)"/>
+
+  <!-- Bold Monogram CR -->
+  <text x="256" y="312" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="164" letter-spacing="-3" fill="url(#textGrad)" filter="url(#subtleGlow)">CR</text>
+
+  <!-- Right Code Bracket Accent > -->
+  <path d="M387 210 L427 256 L387 302" stroke="#cbacf9" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9" filter="url(#subtleGlow)"/>
+
+  <!-- Live Status Beacon Indicator -->
+  <circle cx="400" cy="112" r="24" fill="#34d399" opacity="0.35" filter="url(#glow)"/>
+  <circle cx="400" cy="112" r="14" fill="#34d399" stroke="#ffffff" stroke-width="3.5"/>
+</svg>

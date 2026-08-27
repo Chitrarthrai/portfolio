@@ -10,6 +10,9 @@ import {
   FaCheckCircle,
   FaShieldAlt,
   FaSlidersH,
+  FaGlobe,
+  FaAndroid,
+  FaGithub,
 } from "react-icons/fa";
 
 const apps = [
@@ -72,6 +75,9 @@ class CameraSharpenModule(reactContext: ReactApplicationContext) :
       "Interactive KPI dashboard using Recharts for dynamic daily spending limit adjustments",
     ],
     tech: ["React Native", "React.js", "TypeScript", "Supabase", "Gemini AI", "Kotlin"],
+    liveUrl: "https://finance-task-ten.vercel.app/",
+    appUrl: "https://github.com/Chitrarthrai/FinanceTask/releases",
+    githubUrl: "https://github.com/Chitrarthrai/FinanceTask",
     codeSnippet: `// React Native + Supabase Realtime Sync Hook
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
@@ -111,6 +117,7 @@ export const useRealtimeFinances = (userId: string) => {
       "Serverless Functions & Firebase Realtime Database integration for price delta alerts",
     ],
     tech: ["React Native", "Expo", "SQLite", "Firebase", "Fuzzy Search"],
+    githubUrl: "https://github.com/Chitrarthrai/CheckIt",
     codeSnippet: `// Client-Side Fuzzy Search Optimization with Expo SQLite
 import * as SQLite from 'expo-sqlite';
 import Fuse from 'fuse.js';
@@ -306,8 +313,43 @@ const AppShowcase = () => {
                 </div>
               )}
 
-              {/* Action Button */}
-              <div className="pb-2 pt-2 z-20">
+              {/* Action Buttons */}
+              <div className="pb-2 pt-2 z-20 space-y-2">
+                {(activeApp.liveUrl || activeApp.appUrl) && (
+                  <div className="grid grid-cols-2 gap-2">
+                    {activeApp.liveUrl && (
+                      <a
+                        href={activeApp.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2 px-2 rounded-xl text-[10px] sm:text-[11px] font-bold flex items-center justify-center gap-1 transition-all hover:scale-102"
+                        style={{
+                          background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                          color: "#FFFFFF",
+                          boxShadow: "0 0 16px rgba(16,185,129,0.3)",
+                        }}
+                      >
+                        <FaGlobe size={11} /> Live Web ↗
+                      </a>
+                    )}
+                    {activeApp.appUrl && (
+                      <a
+                        href={activeApp.appUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2 px-2 rounded-xl text-[10px] sm:text-[11px] font-bold flex items-center justify-center gap-1 transition-all hover:scale-102"
+                        style={{
+                          background: "rgba(164,201,255,0.15)",
+                          border: "1px solid rgba(164,201,255,0.35)",
+                          color: "#a4c9ff",
+                        }}
+                      >
+                        <FaAndroid size={12} /> Mobile APK ↗
+                      </a>
+                    )}
+                  </div>
+                )}
+
                 <button
                   onClick={() => setShowCodeDrawer(!showCodeDrawer)}
                   className="w-full py-2.5 rounded-xl bg-purple text-slate-950 font-bold text-xs flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-lg"
@@ -344,7 +386,41 @@ const AppShowcase = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
                   {activeApp.title}
                 </h3>
-                <span className={activeApp.badgeColor}>{activeApp.badge}</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {activeApp.liveUrl && (
+                    <a
+                      href={activeApp.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono font-bold transition-transform hover:scale-105"
+                      style={{
+                        color: "#34D399",
+                        background: "rgba(52,211,153,0.15)",
+                        border: "1px solid rgba(52,211,153,0.35)",
+                      }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Live Web ↗
+                    </a>
+                  )}
+                  {activeApp.appUrl && (
+                    <a
+                      href={activeApp.appUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono font-bold transition-transform hover:scale-105"
+                      style={{
+                        color: "#a4c9ff",
+                        background: "rgba(164,201,255,0.15)",
+                        border: "1px solid rgba(164,201,255,0.35)",
+                      }}
+                    >
+                      <FaAndroid size={11} />
+                      APK Releases ↗
+                    </a>
+                  )}
+                  <span className={activeApp.badgeColor}>{activeApp.badge}</span>
+                </div>
               </div>
 
               <p className="text-sm sm:text-base text-purple font-medium mb-5 sm:mb-6">
